@@ -70,6 +70,16 @@ class MainActivity : AppCompatActivity() {
         viewModel.name_003.observe(this, Observer {
             binding.tv003.text = it
         })
+        viewModel.name_004.observe(this, Observer {
+            binding.tv004.text = it
+        })
+        viewModel.name_005.observe(this, Observer {
+            binding.tv005.text = it
+        })
+        viewModel.name_006.observe(this, Observer {
+            binding.tv006.text = it
+        })
+
         viewModel.value_001.observe(this, Observer {
             binding.tv001Value.text = it.toString()
         })
@@ -79,6 +89,17 @@ class MainActivity : AppCompatActivity() {
         viewModel.value_003.observe(this, Observer {
             binding.tv003Value.text = it.toString()
         })
+        viewModel.value_004.observe(this, Observer {
+            binding.tv004Value.text = it.toString()
+        })
+        viewModel.value_005.observe(this, Observer {
+            binding.tv005Value.text = it.toString()
+        })
+        viewModel.value_006.observe(this, Observer {
+            binding.tv006Value.text = it.toString()
+        })
+
+
 
 
         binding.btnRate.setOnClickListener {
@@ -91,7 +112,7 @@ class MainActivity : AppCompatActivity() {
                 val apiKey = "YOUR_API_KEY"
                 val baseCurrency = "USD"
 
-                val url = "https://api.currencyapi.com/v3/latest?apikey=cur_live_HCiQhtUYx1CW3COn9PDut5p6x5l6faXd6QYM9G7J&currencies=EUR%2CUSD%2CCAD"
+                val url = "https://api.currencyapi.com/v3/latest?apikey=cur_live_HCiQhtUYx1CW3COn9PDut5p6x5l6faXd6QYM9G7J&currencies=EUR%2CUSD%2CCAD%2CGBP%2CJPY%2CAUD"
                 val connection = URL(url).openConnection() as HttpURLConnection
 
                 try {
@@ -106,13 +127,24 @@ class MainActivity : AppCompatActivity() {
                     val EURValue = "EUR: ${rates.getJSONObject("EUR").getString("value")}"
                     val USDValue = "USD: ${rates.getJSONObject("USD").getString("value")}"
                     val CADValue = "CAD: ${rates.getJSONObject("CAD").getString("value")}"
+                    val GBPValue = "GBP: ${rates.getJSONObject("GBP").getString("value")}"
+                    val JPYValue = "JPY: ${rates.getJSONObject("JPY").getString("value")}"
+                    val AUDValue = "AUD: ${rates.getJSONObject("AUD").getString("value")}"
+
 
                     viewModel.name_001.postValue("USD")
                     viewModel.name_002.postValue("EUR")
                     viewModel.name_003.postValue("CAD")
+                    viewModel.name_004.postValue("GBP")
+                    viewModel.name_005.postValue("JPY")
+                    viewModel.name_006.postValue("AUD")
+
                     viewModel.value_001.postValue(USDValue.substring(5).toFloat())
                     viewModel.value_002.postValue(EURValue.substring(5).toFloat())
                     viewModel.value_003.postValue(CADValue.substring(5).toFloat())
+                    viewModel.value_004.postValue(GBPValue.substring(5).toFloat())
+                    viewModel.value_005.postValue(JPYValue.substring(5).toFloat())
+                    viewModel.value_006.postValue(AUDValue.substring(5).toFloat())
 
                 } finally {
                     connection.disconnect()

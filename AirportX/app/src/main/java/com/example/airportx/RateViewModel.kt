@@ -10,19 +10,16 @@ class RateViewModel : ViewModel() {
     var name_001 = MutableLiveData<String>()
     var name_002 = MutableLiveData<String>()
     var name_003 = MutableLiveData<String>()
+    var name_004 = MutableLiveData<String>()
+    var name_005 = MutableLiveData<String>()
+    var name_006 = MutableLiveData<String>()
 
     var value_001 = MutableLiveData<Float>()
     var value_002 = MutableLiveData<Float>()
     var value_003 = MutableLiveData<Float>()
-
-    var l_name_001: String = ""
-    var l_name_002: String = ""
-    var l_name_003: String = ""
-
-
-    var l_value_001: Float = 0.0F
-    var l_value_002: Float = 0.0F
-    var l_value_003: Float = 0.0F
+    var value_004 = MutableLiveData<Float>()
+    var value_005 = MutableLiveData<Float>()
+    var value_006 = MutableLiveData<Float>()
 
 
     fun myRequest() {
